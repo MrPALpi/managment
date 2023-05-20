@@ -1,0 +1,30 @@
+@import './base.css';
+
+.full-window{
+  height: 100vh;
+  width: 100%;
+  padding: 10px 50px;
+}
+.flex-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.text-h1{
+  font-size: 30px;
+  font-weight: 500;
+}
+
+
+
+
+
+@media (hover: hover) {
+ 
+}
+
+@media (max-width: 770px) {
+  .full-window{
+    padding: 10px 5px;
+  }
+}
