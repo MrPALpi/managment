@@ -1,0 +1,3 @@
+[submodule "managment_backend"]
+	path = managment_backend
+	url = https://github.com/Rev1le/managment_backend
