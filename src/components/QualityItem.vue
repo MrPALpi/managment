@@ -22,7 +22,7 @@ export default {
     border-radius: 20px;
     color:var(--alt-color); 
     cursor: pointer;
-    transition: background 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
 }
 .quality-item:nth-child(3n) {
   background: #ff0066;

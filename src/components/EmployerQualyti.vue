@@ -1,7 +1,7 @@
 <template>
     <div class="qualityes-menu" @mouseenter="showMenu" @mouseleave="hideMenu" @click="showMenu">
-      <span style="cursor: help;">
-        Качества &#9660;
+      <span class="qualityes-menu__name">
+        <slot> </slot> &#9660;
       </span>
       <transition name="qualityes-menu">
         <div class="qualityes-menu__wrap" v-show="show">
@@ -41,6 +41,7 @@
     display: flex;
     justify-content: center;
     padding: 10px;
+    
   }
   .qualityes-menu__wrap {
     display: flex;
@@ -54,7 +55,7 @@
     z-index: 2;
     top: 100%;
     width: 100%;
-    min-width: 150px;
+    min-width: 170px;
   }
   
   .qualityes-menu__item:first-child {
@@ -67,12 +68,15 @@
     padding: 10px 10px;
     text-decoration: none;
     color: inherit;
-    text-align: center;
+    text-align: left;
     transition: all 0.05s ease-in;
     word-break: break-word;
     
   }
-  
+  .qualityes-menu__name{
+    cursor: help;
+    font-weight: 600;
+  }
 
   @media (hover: hover) {
     .qualityes-menu__item:hover {

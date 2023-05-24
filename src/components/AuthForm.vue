@@ -80,6 +80,7 @@ export default {
     border-radius: 5px;
     font-size: 20px;
     cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .form__fieldset {

@@ -33,8 +33,7 @@ export default {
 
 <style>
 .qualities-list {
-  /* display: grid; */
-  /* grid-template-columns: repeat(auto-fill, minmax(80px,max-content)); */
+  position: relative;
   display: flex;
   flex-flow: row wrap;
   -webkit-flex-wrap: wrap;
@@ -42,21 +41,5 @@ export default {
   width: 100%;
   gap: 5px;
 }
-.list-move,
-.list-enter-active,
-.list-leave-active{
-    transition: all 0.5s ease;
-}
 
-
-.list-enter-from,
-.list-leave-to{
-    opacity: 0;
-    transform: translateX(30px);
-}
-
-
-.list-leave-active {
-    position: absolute;
-}
 </style>

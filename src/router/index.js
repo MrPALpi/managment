@@ -15,6 +15,18 @@ const router = createRouter({
       name: 'about',
       component: () => import('../views/AboutView.vue'),
       meta: { transition: 'slide-right' }, 
+    },
+    {
+      path: '/enterprise',
+      name: 'enterprise',
+      component: () => import('../views/СhoiceEnterprise.vue'),
+      meta: { transition: 'slide-right' }, 
+    },
+    {
+      path: '/schema',
+      name: 'schema',
+      component: () => import('../views/SchemaEnterprise.vue'),
+      meta: { transition: 'slide-right' }, 
     }
   ]
 })

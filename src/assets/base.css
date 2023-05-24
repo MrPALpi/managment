@@ -11,9 +11,11 @@
   --alt-color:white;
   --bg-color:white;
   --btn-color:#21A038;
+  --btn-color-hover:#23b63e;
   --tracing:gray;
   --shadow:rgba(0, 0, 0, 0.4);
   --shadow-box:0px 8px 16px var(--shadow);
+  --small-shadow-box:0px 4px 8px var(--shadow);
 }
 html, body{
   overflow-x: hidden;

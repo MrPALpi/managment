@@ -1,9 +1,10 @@
 <template>
     
-    <div class="employer-item">
-        <div>Фамилия: {{ employer.name }} </div>
-        <EmployerQualyti :qualityes="employer.qualities"></EmployerQualyti>
-        <button class="employer-item__delete" @click="deleteEmp"> &#10006; </button>
+    <div class="list-item">
+        <div class="list-item__text">Фамилия: {{ employer.name }} </div>
+        <EmployerQualyti :qualityes="employer.vacancies">Профессии</EmployerQualyti>
+        <EmployerQualyti :qualityes="employer.qualities">Качества</EmployerQualyti>
+        <button class="list-item__delete" @click="deleteEmp"> &#10006; </button>
     </div>
 </template>
 
@@ -26,23 +27,5 @@ export default {
 </script>
 
 <style>
-.employer-item{
-    /* БЕЛЫЙ ТЕКСТ */
-    padding: 5px 10px;
-    display: flex;
-    border-radius: 20px;
-    color:var(--color);
-    justify-content: space-between;
-    align-items: center; 
-    /* cursor: pointer; */
-    /* transition: background 0.2s ease-in-out; */
-}
-.employer-item__delete{
-    cursor: pointer;
-    background: none;
-    border: none;
-    color: red;
-    font-size: 24px;
-    font-weight: 900;
-}
+
 </style>

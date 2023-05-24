@@ -22,6 +22,7 @@
 
 <script>
 import QualitiesList from './QualitiesList.vue';
+import { invoke } from "@tauri-apps/api";
 export default {
     components:{
         QualitiesList
@@ -33,31 +34,31 @@ export default {
                 qualities:[],
             },
             qualities: [
-                "активность",
-                "альтруизм",
-                "артистичность",
-                "бескорыстие",
-                "благородство",
-                "бесстрашие",
-                "вежливость",
-                "великодушие",
-                "вера",
-                "верность",
-                "внимательность",
-                "воля",
-                "выдержка",
-                "галантность",
-                "гостеприимство",
-                "гуманность",
-                "дальновидность",
-                "доброжелательность",
-                "добросовестность",
-                "доброта",
-                "дружелюбие",
-                "естественность",
-                "женственность",
-                "жизнелюбие",
-                "заботливость",
+                // "активность",
+                // "альтруизм",
+                // "артистичность",
+                // "бескорыстие",
+                // "благородство",
+                // "бесстрашие",
+                // "вежливость",
+                // "великодушие",
+                // "вера",
+                // "верность",
+                // "внимательность",
+                // "воля",
+                // "выдержка",
+                // "галантность",
+                // "гостеприимство",
+                // "гуманность",
+                // "дальновидность",
+                // "доброжелательность",
+                // "добросовестность",
+                // "доброта",
+                // "дружелюбие",
+                // "естественность",
+                // "женственность",
+                // "жизнелюбие",
+                // "заботливость",
                 
       ],
         }
@@ -73,7 +74,7 @@ export default {
             this.employer.qualities = this.employer.qualities.filter(qlt => qlt!==quality);
         },
         addEmployer(){
-            if (this.employer.name && this.employer.qualities.length == 5){
+            if (this.employer.name && this.employer.qualities.length){
                 this.$emit('addEmployer', this.employer);
                 this.employer={
                 name:'',
@@ -85,7 +86,10 @@ export default {
             }
         }
 
-    }
+    },
+    async mounted() {
+         this.qualities = (await invoke("get_skills", {})).map((elm)=> elm.name);
+    },
 }
 </script>
 

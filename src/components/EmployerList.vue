@@ -1,6 +1,6 @@
 <template>
-    <div class="employer-list">
-      <transition-group name="list">
+    <div class="list">
+      <transition-group name="list-clear">
       <EmployerItem
         v-for="empl in employers"
         :key="empl"
@@ -33,30 +33,23 @@
   </script>
   
   <style>
-  .qualities-list {
-    display: flex;
-    flex-direction: column;
-    -webkit-flex-wrap: wrap;
-    -webkit-flex-flow: row wrap;
-    width: 100%;
-    gap: 5px;
-  }
-  .list-move,
-  .list-enter-active,
-  .list-leave-active{
+  
+  .list-clear-move,
+  .list-clear-enter-active,
+  .list-clear-leave-active{
       transition: all 0.5s ease;
   }
   
   
-  .list-enter-from,
-  .list-leave-to{
+  .list-clear-enter-from,
+  .list-clear-leave-to{
       opacity: 0;
       transform: translateX(30px);
   }
   
   
-  .list-leave-active {
+  /* .list-clear-leave-active {
       position: absolute;
-  }
+  } */
   </style>
   
