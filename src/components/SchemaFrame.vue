@@ -5,8 +5,8 @@
             
             <EmployerList :employers="employers"></EmployerList>
         </div>
-        <div class="desk__item-right form">
-                <DraggableBlocks></DraggableBlocks>
+        <div class="desk__item-right form grid">
+                <TreeEmployers></TreeEmployers>
           
         </div>
    
@@ -15,7 +15,7 @@
 
 <script>
 import EmployerList from './EmployerList.vue';
-
+import TreeEmployers from './TreeEmployers.vue';
 import globalStore from '../stores/globalStore'
 
 import { mapActions,  mapState } from 'pinia';
@@ -24,6 +24,7 @@ export default {
     name:"create-empl",
     components:{
         EmployerList,
+        TreeEmployers
     
     },
     data(){
@@ -48,3 +49,8 @@ export default {
 }
 
 </script>
+<style>
+.grid{
+    display: grid;
+}
+</style>
