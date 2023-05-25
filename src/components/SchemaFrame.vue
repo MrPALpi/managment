@@ -1,11 +1,7 @@
 <template>
-    <div class="desk">
+    <div class="full-window flex-center">
         
-        <div class="desk__item-left form">
-            
-            <EmployerList :employers="employers"></EmployerList>
-        </div>
-        <div class="desk__item-right form grid">
+        <div class="desk display__block" @drop="console.log('sss')">
                 <TreeEmployers></TreeEmployers>
           
         </div>
@@ -14,7 +10,7 @@
 </template>
 
 <script>
-import EmployerList from './EmployerList.vue';
+
 import TreeEmployers from './TreeEmployers.vue';
 import globalStore from '../stores/globalStore'
 
@@ -23,7 +19,7 @@ import { invoke } from "@tauri-apps/api";
 export default {
     name:"create-empl",
     components:{
-        EmployerList,
+
         TreeEmployers
     
     },

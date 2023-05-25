@@ -34,7 +34,7 @@ export default {
     } 
   },
   async mounted() {
-        this.enterprices = await invoke("get_jobs", {});
+        this.enterprices = await invoke("get_companies", {});
         
     },
 

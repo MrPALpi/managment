@@ -73,7 +73,18 @@
   .list-leave-active {
       position: absolute;
   }
-
+  .list-clear-move,
+  .list-clear-enter-active,
+  .list-clear-leave-active{
+      transition: all 0.5s ease;
+  }
+  
+  
+  .list-clear-enter-from,
+  .list-clear-leave-to{
+      opacity: 0;
+      transform: translateX(30px);
+  }
 
 @media (hover: hover) {
   .form__btn:hover{
@@ -88,6 +99,9 @@
   -moz-filter: brightness(1.1);
   -o-filter: brightness(1.1);
   -ms-filter: brightness(1.1);
+  }
+  .drag-item:hover{
+    box-shadow: 0 10px 30px rgba(0,0,0,.05);
   }
 }
 

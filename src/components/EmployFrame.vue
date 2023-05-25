@@ -7,7 +7,7 @@
         <div class="desk__item-right form">
             <EmployerList :employers="employers" @deleteEmp="deleteEmp"></EmployerList>
             <div class="end-btn">
-            <button :disabled="!this.employers.length" class="form__btn" @click="nextPage"> Далее &#8594; выбор предприятия</button>
+            <button :disabled="this.employers.length<=4" class="form__btn" @click="nextPage"> Далее &#8594; выбор предприятия</button>
             </div>
         </div>
    
@@ -35,10 +35,10 @@ export default {
         ...mapActions(globalStore, ['pushEmployer','removeEmployer']),
 
         async addEmployer(empl){
-            // const lengthEMPL = this.employers.length
-            if (this.employers.length < 5){
-                // empl.id = lengthEMPL;
-                console.log(this.employers.length);
+            const lengthEMPL = this.employers.length
+            if (lengthEMPL < 5){
+                empl.id = lengthEMPL;
+                // console.log(this.employers.length);
                 const workerToReq = {name:empl.name, skills:empl.qualities};
             
                 const result = await invoke("get_vacancies_for_worker", {"worker":workerToReq});
@@ -56,9 +56,12 @@ export default {
             return sortable;
         },
         nextPage(){
-            if (this.employers.length){
+            if (this.employers.length>4){
                 this.$router.push("/enterprise")
+            }else{
+                console.log("Создайте 5 работников");
             }
+
         },
         deleteEmp(empl){
             this.removeEmployer(empl);
