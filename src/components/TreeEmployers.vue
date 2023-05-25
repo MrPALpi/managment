@@ -34,19 +34,27 @@ export default {
       },
       BufferEmpl: [],
       requestObj: {
-        job_name: "OOP",
-        workers: [],
+        job_name: "OOP", //Заменить на company_name
+        workers: {}, // Заменить на placements
       },
     };
   },
   methods: {
     select(node, value) {
       // console.log(node);
-      this.requestObj.workers = this.requestObj.workers.filter((elm)=>
-        Object.values(elm)[0]!=value);
-      this.requestObj.workers.push({[node.label]:value});
+      // this.requestObj.workers = this.requestObj.workers.filter((elm)=>
+      //   Object.values(elm)[0]!=value);
+      //this.requestObj.workers.push({[node.label]:value});
+      const current_employer = this.employers.find(
+        (el, ind, array)=> { 
+          if (el.name == value) {
+            return el;
+          }
+        }
+        )
+      this.requestObj.workers[node.label] = current_employer;
       
-      console.log(this.requestObj);
+      console.log(JSON.stringify(this.requestObj));
     },
     // selected(value)
   },
