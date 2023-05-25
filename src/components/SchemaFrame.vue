@@ -1,5 +1,5 @@
 <template>
-    <div class="full-window flex-center">
+    <div class="flex-center">
         
         <div class="desk display__block" @drop="console.log('sss')">
                 <TreeEmployers></TreeEmployers>

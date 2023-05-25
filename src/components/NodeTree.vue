@@ -2,14 +2,14 @@
     <li class="node-tree" >
       <span class="label">{{ node.label }}
         
-        <MySelector @select="select" :qualityes="emp">
+        <MySelector @select="select" @addBack="addBack" :qualityes="emp">
 
         </MySelector>
              
     </span>
         
       <ul v-if="node.children && node.children.length">
-        <node v-for="child in node.children" :key="child" :node="child" :emp="emp" @select="selected"></node>
+        <node v-for="child in node.children" :key="child" :node="child" :emp="emp" @select="selected" @addBack="addBacked"></node>
       </ul>
     </li>
   </template>
@@ -26,34 +26,24 @@ import MySelector from './MySelector.vue';
       node: Object,
       emp:Array,
     },
-    // data(){
-    //     return{
-    //         empl:Object,
-    //     }
-    // },
+
     methods:{
-        // onDragstart(ev, emp){
-        //     console.log(ev,emp);
-        //     ev.dataTransfer.dropEffect='move';
-        //     ev.dataTransfer.effectAllowed='move';
-        //     ev.dataTransfer.setData('emp',emp.toString());
-        // },
-        onDrop(ev, emp){
-            console.log(ev);
+        addBack(emplBack){
+          // console.log("Добавить назад 1", emplBack);
+          this.$emit("addBack",this.node,emplBack);
+        },
+        addBacked(node,emplBack){
+          // console.log("Добавить назад 1", emplBack);
+          this.$emit("addBack",node,emplBack);
         },
         selected(node,value){
             this.$emit("select",node,value);
         },
         select(value){
-            // console.log(this.node,value);
             this.$emit("select",this.node,value);
         }
     },
-    // async mounted() {
-    //     this.tauriListeners.push(
-    //       await tauriListen("tauri://file-drop", console.log("SSSSSSSS"))
-    //     );
-    // }
+
 
   };
   </script>

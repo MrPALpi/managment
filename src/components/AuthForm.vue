@@ -57,7 +57,7 @@ export default {
                 localStorage.setItem('name', this.enterData.name);
                 localStorage.setItem('group',this.enterData.group)
                 this.enterData.name = this.enterData.group = '';
-                this.$router.push('/about');
+                this.$router.push('/employers');
                 return;
             }
             this.errors = [];
@@ -106,7 +106,7 @@ export default {
     border-radius: 12px;
     padding: 40px 30px 20px;
     min-width: 200px;
-    width: 40%;
+    /* width: 40%; */
     max-width: 500px;
     display: grid;
     gap: 15px;
@@ -130,7 +130,7 @@ export default {
     color: inherit;
 }
 
-@media (max-width: 770px) {
+@media (max-width: 790px) {
     .form {
         width: 95%;
     }

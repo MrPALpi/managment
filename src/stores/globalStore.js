@@ -13,6 +13,12 @@ const globalStore = defineStore('globalStore', {
     pushEmployer(empl) {
       this.employers.push(empl);
     },
+    removeAllEmployer(){
+      this.employers=[];
+    },
+    removeJobe(){
+      this.jobe='';
+    },
     removeEmployer(empl){
       this.employers = this.employers.filter(emp => emp!==empl);
     },

@@ -1,12 +1,12 @@
 <template>
-  <HelloWorld></HelloWorld>
+  <FormSubmit></FormSubmit>
 </template>
 
 <script>
-import HelloWorld from '../components/HelloWorld.vue';
+import FormSubmit from '../components/FormSubmit.vue';
 export default {
   components:{
-    HelloWorld,
+    FormSubmit,
   }
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
     <div class="qualityes-menu" @mouseenter="showMenu" @mouseleave="hideMenu" @click="showMenu">
-      <span class="qualityes-menu__name">
-        {{ selected }} 
+      <span class="qualityes-menu__name" @click="clearSelect">
+        {{ selected.name }} 
       </span>
       <transition name="qualityes-menu">
         <div class="qualityes-menu__wrap" v-show="show">
@@ -21,7 +21,7 @@
     data(){
         return{
             show:false,
-            selected:'Выберите',
+            selected:{name:''},
         }
     },
     methods: {
@@ -31,11 +31,20 @@
       hideMenu(){
         this.show=false;
       },
-      select(qlt){
-        if (this.selected!==qlt.name){
-        this.selected = qlt.name;
-        this.$emit("select", qlt.name);
+      clearSelect(){
+        if (this.selected.name){
+          console.log(this.selected);
+        this.$emit("addBack", this.selected);
+        this.selected = {name:''};
         }
+      },
+      select(qlt){
+        if (this.selected.name){
+          this.clearSelect();
+        }
+        this.selected = qlt;
+        this.$emit("select", qlt);
+        // }
       }
       
     }

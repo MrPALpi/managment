@@ -1,19 +1,31 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: HomeView,
+      name:'home',
+      component: () => import('../views/HomeView.vue'),
+      meta: { transition: 'slide-right' }, 
+    },
+    {
+      path: '/result/:id',
+      name: 'result',
+      component: () => import('../views/resultView.vue'),
       meta: { transition: 'slide-right' }, 
     },
     {
       path: '/about',
       name: 'about',
       component: () => import('../views/AboutView.vue'),
+      meta: { transition: 'slide-right' }, 
+    },
+    {
+      path: '/employers',
+      name: 'employers',
+      component: () => import('../views/EmployerView.vue'),
       meta: { transition: 'slide-right' }, 
     },
     {
@@ -29,6 +41,19 @@ const router = createRouter({
       meta: { transition: 'slide-right' }, 
     }
   ]
+})
+router.beforeEach(async (to, from, next) => {
+  if(from.name==='result' && to.name==='schema'){
+    next({name:'home'});
+ 
+  }
+
+  else{
+
+    next();
+  }
+ 
+
 })
 
 export default router

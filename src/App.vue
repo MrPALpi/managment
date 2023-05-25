@@ -8,7 +8,7 @@
 
 <script>
 
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from './components/FormSubmit.vue'
 export default{
   comments:{
     HelloWorld,

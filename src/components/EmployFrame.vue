@@ -7,7 +7,7 @@
         <div class="desk__item-right form">
             <EmployerList :employers="employers" @deleteEmp="deleteEmp"></EmployerList>
             <div class="end-btn">
-            <button :disabled="this.employers.length<=4" class="form__btn" @click="nextPage"> Далее &#8594; выбор предприятия</button>
+            <button :disabled="!this.employers.length" class="form__btn" @click="nextPage"> Далее &#8594; выбор предприятия</button>
             </div>
         </div>
    
@@ -26,27 +26,25 @@ export default {
         CreatingEmploy,
         EmployerList,
     },
-    data(){
-        return{
-            // employers:[]
-        }
-    },
+
     methods:{
-        ...mapActions(globalStore, ['pushEmployer','removeEmployer']),
+        ...mapActions(globalStore, ['pushEmployer','removeEmployer','removeAllEmployer']),
 
         async addEmployer(empl){
             const lengthEMPL = this.employers.length
             if (lengthEMPL < 5){
                 empl.id = lengthEMPL;
-                // console.log(this.employers.length);
+                
                 const workerToReq = {name:empl.name, skills:empl.qualities};
             
                 const result = await invoke("get_vacancies_for_worker", {"worker":workerToReq});
                 empl.vacancies = this.toArray(result.vacancies)
-                console.log(empl);
+               
                 this.pushEmployer(empl);
-                // console.log(this.employers,"SSS");
-                // this.employers.push(empl);
+               
+            }
+            else{
+                alert("Лимит работников = 5");
             }
             
         },
@@ -56,16 +54,19 @@ export default {
             return sortable;
         },
         nextPage(){
-            if (this.employers.length>4){
+            if (this.employers.length){
                 this.$router.push("/enterprise")
             }else{
-                console.log("Создайте 5 работников");
+                console.log("Создайте работников");
             }
 
         },
         deleteEmp(empl){
             this.removeEmployer(empl);
         }
+    },
+    mounted(){
+        this.removeAllEmployer();
     },
     computed:{
         ...mapState(globalStore,['employers'])
@@ -87,8 +88,7 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /* display: block;
-    position: relative; */
+
 }
 .desk__item-left,
 .desk__item-right{
@@ -96,6 +96,8 @@ export default {
     width: 100%;
     margin: 0;
     overflow-y: auto;
+    scrollbar-gutter: stable;
+    padding: 40px 20px 20px 30px;
 }
 .form__btn:disabled{
     background: var(--tracing);

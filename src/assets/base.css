@@ -22,3 +22,25 @@ html, body{
   overflow-x: hidden;
 }
 
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--tracing) var(--border);
+  
+}
+
+/* для Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  height: 12px;
+  width: 10px;
+
+}
+
+
+*::-webkit-scrollbar-track {
+  background: var(--border);
+}
+*::-webkit-scrollbar-thumb {
+  background-color: var(--tracing);
+  border-radius: 5px;
+  border: 3px solid var(--border);
+}

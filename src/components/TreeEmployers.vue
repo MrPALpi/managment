@@ -5,8 +5,10 @@
         :node="treeData"
         :emp="BufferEmpl"
         @select="select"
+        @addBack="addBack"
       ></node-tree>
     </ul>
+    <button @click="rateSchema" class="form__btn next-btn">Далее</button>
   </div>
 </template>
 
@@ -34,36 +36,48 @@ export default {
       },
       BufferEmpl: [],
       requestObj: {
-        job_name: "OOP", //Заменить на company_name
-        workers: {}, // Заменить на placements
+        company_name: "OOP", //Заменить на company_name
+        placements: {}, // Заменить на placements
       },
     };
   },
   methods: {
-    select(node, value) {
-      // console.log(node);
-      // this.requestObj.workers = this.requestObj.workers.filter((elm)=>
-      //   Object.values(elm)[0]!=value);
-      //this.requestObj.workers.push({[node.label]:value});
-      const current_employer = this.employers.find(
-        (el, ind, array)=> { 
-          if (el.name == value) {
-            return el;
-          }
-        }
-        )
-      this.requestObj.workers[node.label] = current_employer;
+    select(node, value) { 
+      this.BufferEmpl = this.BufferEmpl.filter(elm => elm.id!==value.id);
+      // console.log(this.BufferEmpl.length);
+      // const current_employer = this.employers.find(
+      //   (el, ind, array)=> { 
+      //     if (el.name == value.name) {
+      //       return el;
+      //     }
+      //   }
+      //   )
+      this.requestObj.placements[node.label] = value;
       
-      console.log(JSON.stringify(this.requestObj));
+  /*    console.log(JSON.stringify(this.requestObj));*/
     },
-    // selected(value)
+    async rateSchema(){
+      if (Object.keys(this.requestObj.placements).length !== this.employers.length){ 
+        alert("Не все пользователи включены");
+        return;
+      }
+      
+      const res = await invoke("check_placement", {"data":this.requestObj});
+      console.log(Math.round(res*100));
+      this.$router.push(`result/${Math.round(res*100)}`);
+    },
+  
+    addBack(node,emplBack){
+      delete this.requestObj.placements[node.label];
+      this.BufferEmpl.push(emplBack);
+      
+    }
   },
   async mounted() {
-    console.log(this.employers);
     const res = await invoke("get_current_company", { companyName: this.jobe });
 
     this.treeData = res.tree;
-    this.requestObj.job_name = this.jobe;
+    this.requestObj.company_name = this.jobe;
     this.BufferEmpl = this.employers;
   },
   computed: {
@@ -76,10 +90,16 @@ export default {
 </script>
 
 <style>
+.next-btn{
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+}
 .tree {
   width: 100%;
   height: auto;
   text-align: center;
+  position: relative;
 }
 .tree ul {
   padding-top: 20px;
@@ -157,7 +177,7 @@ export default {
 .tree li span:hover + ul li span div {
   background: #c8e4f8;
   color: #000;
-  border: 1px solid #94a0b4;
+  /* border: 1px solid #94a0b4; */
 }
 .tree li span:hover + ul li::after,
 .tree li span:hover + ul li::before,
