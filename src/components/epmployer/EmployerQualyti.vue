@@ -76,6 +76,7 @@
   .qualityes-menu__name{
     cursor: help;
     font-weight: 600;
+    white-space: nowrap;
   }
 
   @media (hover: hover) {

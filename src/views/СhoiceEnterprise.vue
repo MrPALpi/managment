@@ -3,7 +3,7 @@
   </template>
   
   <script>
-  import ChooseEntrprise from '../components/ChooseEntrprise.vue';
+  import ChooseEntrprise from '../components/enterprise/ChooseEntrprise.vue';
   export default {
     components:{
       ChooseEntrprise,

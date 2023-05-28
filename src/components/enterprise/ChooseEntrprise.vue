@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import ListEnterprise from "./ListEnterprise.vue";
+import ListEnterprise from "../enterprise/ListEnterprise.vue";
 export default {
   components: {
     ListEnterprise,

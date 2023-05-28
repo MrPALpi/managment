@@ -13,7 +13,7 @@
 
 <script>
 import EnterpriceItem from "./EnterpriceItem.vue";
-import globalStore from '../stores/globalStore'
+import globalStore from '../../stores/globalStore'
 import { mapActions} from 'pinia';
 import { invoke } from "@tauri-apps/api";
 export default {

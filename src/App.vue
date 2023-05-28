@@ -8,12 +8,12 @@
 
 <script>
 
-import HelloWorld from './components/FormSubmit.vue'
-export default{
-  comments:{
-    HelloWorld,
-  }
-}
+// import HelloWorld from './components/FormSubmit.vue'
+// export default{
+//   comments:{
+//     HelloWorld,
+//   }
+// }
 </script>
 
 <style >

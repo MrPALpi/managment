@@ -37,7 +37,7 @@ export default{
         again(){
             this.removeAllEmployer();
             this.removeJobe();
-            this.$router.push('/');
+            this.$router.push('/student');
         }
     },
     mounted(){

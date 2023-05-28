@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import EmployFrame from '../components/EmployFrame.vue';
+import EmployFrame from '../components/epmployer/EmployFrame.vue';
 export default {
   components:{
     EmployFrame,

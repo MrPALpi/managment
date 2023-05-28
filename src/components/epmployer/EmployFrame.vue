@@ -16,8 +16,9 @@
 
 <script>
 import CreatingEmploy from './CreatingEmploy.vue';
+
 import EmployerList from './EmployerList.vue';
-import globalStore from '../stores/globalStore'
+import globalStore from '../../stores/globalStore'
 import { mapActions,  mapState } from 'pinia';
 import { invoke } from "@tauri-apps/api";
 export default {

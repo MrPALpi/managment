@@ -15,7 +15,7 @@
 <script>
 import NodeTree from "./NodeTree.vue";
 import { invoke } from "@tauri-apps/api";
-import globalStore from "../stores/globalStore";
+import globalStore from "../../stores/globalStore";
 import { mapState } from "pinia";
 export default {
   data() {
@@ -44,17 +44,9 @@ export default {
   methods: {
     select(node, value) { 
       this.BufferEmpl = this.BufferEmpl.filter(elm => elm.id!==value.id);
-      // console.log(this.BufferEmpl.length);
-      // const current_employer = this.employers.find(
-      //   (el, ind, array)=> { 
-      //     if (el.name == value.name) {
-      //       return el;
-      //     }
-      //   }
-      //   )
+
       this.requestObj.placements[node.label] = value;
-      
-  /*    console.log(JSON.stringify(this.requestObj));*/
+
     },
     async rateSchema(){
       if (Object.keys(this.requestObj.placements).length !== this.employers.length){ 

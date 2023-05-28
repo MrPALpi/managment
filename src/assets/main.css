@@ -44,8 +44,10 @@
   /* align-items: center;  */
   width: 100%;
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 0.2fr;
+  grid-template-columns: 1.5fr repeat(2, 1fr) 0.2fr;
   box-shadow: var(--small-shadow-box);
+  grid-auto-flow: column;
+
   /* cursor: pointer; */
   /* transition: background 0.2s ease-in-out; */
 }

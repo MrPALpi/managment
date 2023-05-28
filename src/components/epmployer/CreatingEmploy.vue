@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import QualitiesList from './QualitiesList.vue';
+import QualitiesList from '../quality/QualitiesList.vue';
 import { invoke } from "@tauri-apps/api";
 export default {
     components:{

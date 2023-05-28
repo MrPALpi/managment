@@ -8,7 +8,7 @@
   </template>
   
   <script>
-  import SchemaFrame from '../components/SchemaFrame.vue';
+  import SchemaFrame from '../components/schema/SchemaFrame.vue';
   export default {
     components:{
         SchemaFrame,

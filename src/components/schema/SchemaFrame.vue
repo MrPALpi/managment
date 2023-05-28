@@ -12,7 +12,7 @@
 <script>
 
 import TreeEmployers from './TreeEmployers.vue';
-import globalStore from '../stores/globalStore'
+import globalStore from '../../stores/globalStore'
 
 import { mapActions,  mapState } from 'pinia';
 import { invoke } from "@tauri-apps/api";
