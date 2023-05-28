@@ -11,6 +11,8 @@
 import { invoke } from "@tauri-apps/api";
 // import { defineAsyncComponent } from 'vue';
 import VariantQuestion from "./VariantQuestion.vue";
+import { mapState } from "pinia";
+import useAnswerStore from "@/stores/answerStore.js";
 // const VariantQuestion = defineAsyncComponent({
 //   loader: () => import('./VariantQuestion.vue')
 // });
@@ -30,9 +32,13 @@ export default {
       if (this.questionNumber < this.len - 1) {
         this.questionNumber++;
       } else {
+        console.log("все ответы теста: ", this.answers);
         this.$router.push("/student");
       }
     },
+  },
+  computed: {
+    ...mapState(useAnswerStore, ["answers"])
   },
 
   async created() {

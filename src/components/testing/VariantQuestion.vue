@@ -22,6 +22,8 @@
 // import { computed, defineAsyncComponent } from "vue";
 import { invoke } from "@tauri-apps/api";
 import VariantAnswer from "./VariantAnswer.vue";
+import useAnswerStore from "@/stores/answerStore";
+import { mapActions } from "pinia";
 // const VariantAnswer = defineAsyncComponent({
 //   loader: () => import('./VariantAnswer.vue')
 // });
@@ -42,10 +44,20 @@ export default {
     };
   },
   methods: {
+    ...mapActions(useAnswerStore, ["pushNewAnswer"]),
+    
     async nextQuestion(){
-        console.log(this.answer);
-        const res = await invoke("get_questions_answers", [{answers:[this.answer]}]);
+        console.log("Полученный ответ: ", this.answer);
+        const res = await invoke("get_questions_answers", {answers: [this.answer]});
         console.log(res);
+        
+        this.pushNewAnswer(
+          {
+            questions_uuid: this.answer.question_uuid, 
+            answer_reslt: Boolean(res)
+          }
+        );
+
         this.$emit("nextQuestion");
         this.answer.answers = [];
     }
@@ -55,7 +67,6 @@ export default {
   watch: {
     questionProps(newQuestion, oldQuestion) {
       this.question = newQuestion;
-    //   console.log(this.question);
 
       this.answer.question_uuid = newQuestion.uuid;
     },
