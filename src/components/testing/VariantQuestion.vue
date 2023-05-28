@@ -1,10 +1,10 @@
 <template>
   <div>
     <div class="form__text">
-      {{ question.title }}
+      {{ questionProp.title }}
       <div class="answers">
         <variant-answer
-          v-for="variant in question.variants"
+          v-for="variant in questionProp.variants"
           :key="variant"
           :variantProps="variant"
           v-model="answer.answers"
@@ -32,9 +32,9 @@ export default {
     VariantAnswer,
   },
   props: {
-    questionProps: {
+    questionProp: {
       type: Object,
-    //   required: true,
+      required: true,
     },
   },
   data() {
@@ -64,14 +64,14 @@ export default {
   },
 
 
-  watch: {
-    questionProps(newQuestion, oldQuestion) {
-      this.question = newQuestion;
+  // watch: {
+  //   questionProp(newQuestion, oldQuestion) {
+  //     this.question = newQuestion;
 
-      this.answer.question_uuid = newQuestion.uuid;
-    },
+  //     this.answer.question_uuid = newQuestion.uuid;
+  //   },
 
-  },
+  // },
 };
 </script>
 

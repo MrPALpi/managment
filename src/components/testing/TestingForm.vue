@@ -1,7 +1,7 @@
 <template>
   <div class="form">
     <variant-question
-      :questionProps="questions[questionNumber]"
+      :questionProp="questions[questionNumber]"
       @nextQuestion="nextQuestion"
     ></variant-question>
   </div>
@@ -22,7 +22,7 @@ export default {
   },
   data() {
     return {
-      questions: Array,
+      questions: [{}],
       len: 0,
       questionNumber: 0,
     };
@@ -42,9 +42,10 @@ export default {
   },
 
   async created() {
-    const questTest = await invoke("get_questions", {});
-    this.questions = await questTest;
+    this.questions = await invoke("get_questions", {});
     this.len = this.questions.length;
+
+    console.log("Вопросы: ", this.questions, "размер:", this.len);
   },
 };
 </script>
