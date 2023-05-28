@@ -7,7 +7,7 @@
       <button class="form__btn" @click="$router.push('/employers')">
         Пройти испытание
       </button>
-      <button class="form__btn" @click="$router.push('/employers')">
+      <button class="form__btn" @click="$router.push('/teststudent')">
         Пройти тест
       </button>
     </div>

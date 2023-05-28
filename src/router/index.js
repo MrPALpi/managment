@@ -17,6 +17,12 @@ const router = createRouter({
       meta: { transition: 'slide-right' }, 
     },
     {
+      path: '/teststudent',
+      name: 'testStudent',
+      component: () => import('../views/testStudentView.vue'),
+      meta: { transition: 'slide-right' }, 
+    },
+    {
       path: '/result/:id',
       name: 'result',
       component: () => import('../views/resultView.vue'),
